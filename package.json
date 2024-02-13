@@ -9,9 +9,6 @@
     "lint": "next lint",
     "format": "prettier --write \"app\""
   },
-  "engines": {
-    "node": ">=18"
-  },
   "dependencies": {
     "@langchain/community": "^0.0.26",
     "@langchain/openai": "^0.0.14",
