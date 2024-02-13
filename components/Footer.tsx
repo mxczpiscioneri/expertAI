@@ -14,7 +14,7 @@ export default function Footer() {
         <div className="footer-bg-gradient h-[9.90px] w-full"></div>
         <div className="footer-bg-gradient h-[13px] w-full"></div>
       </div>
-      <div className="relative mx-auto max-w-[1170px] px-4 pt-17.5 sm:px-8 xl:px-0">
+      <div className="relative mx-auto max-w-[1170px] px-4 pt-17.5">
         <div className="footer-divider-gradient absolute left-0 top-0 h-[1px] w-full"></div>
         <div className="flex flex-wrap justify-between">
           <div className="mb-10 w-full max-w-[520px]">

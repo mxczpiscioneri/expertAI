@@ -31,7 +31,7 @@ export default function Home() {
             <div className="-u-z-10 absolute left-1/2 top-0 h-full w-full -translate-x-1/2 bg-[url(/images/blur-01.svg)] bg-cover bg-top bg-no-repeat"></div>
           </div>
         </div>
-        <div className="relative z-1 mx-auto max-w-[900px] px-4 sm:px-8 xl:px-0">
+        <div className="relative z-1 mx-auto max-w-[900px]">
           <div className="text-center">
             <h1 className="my-6 text-3xl font-extrabold text-white sm:text-5xl xl:text-heading-1">
               Sua Inteligência Especializada

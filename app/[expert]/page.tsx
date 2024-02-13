@@ -16,7 +16,7 @@ export default function Page({ params }: { params: { expert: string } }) {
     <>
       <Header />
       <section id="support" className="scroll-mt-17">
-        <div className="container mx-auto px-4 sm:px-8 xl:px-0">
+        <div className="container mx-auto">
           <div className="relative z-999 overflow-hidden rounded-[30px] bg-dark px-4 pt-25 sm:px-20 lg:px-27.5">
             <div className="absolute -top-[16%] left-1/2 -z-1 flex w-full max-w-[690px] -translate-x-1/2 justify-center gap-7.5 opacity-40">
               <div className="pricing-grid pricing-grid-border relative bottom-12 h-[250px] w-full max-w-[50px]"></div>
@@ -97,7 +97,7 @@ export default function Page({ params }: { params: { expert: string } }) {
                 {expert.description}
               </p>
             </div>
-            <div className="form-box-gradient relative overflow-hidden rounded-[25px] bg-dark p-6 sm:p-8 xl:p-15 mb-20">
+            <div className="form-box-gradient relative overflow-hidden rounded-[25px] bg-dark p-4 md:p-8 xl:p-15 mb-20">
               <ChatWindow
                 endpoint="api/chat"
                 emoji={expert.icon}

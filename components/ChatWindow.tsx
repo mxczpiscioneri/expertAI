@@ -157,7 +157,7 @@ export function ChatWindow(props: {
   }
 
   return (
-    <div className="flex flex-col items-center p-4 md:p-8 rounded overflow-hidden">
+    <div className="flex flex-col items-center md:p-8 rounded overflow-hidden">
       {messages.length === 0 ? emptyStateComponent : ""}
       <div
         className="flex flex-col-reverse w-full mb-4 overflow-auto transition-[flex-grow] ease-in-out"
@@ -182,18 +182,21 @@ export function ChatWindow(props: {
 
       {messages.length === 0 && ingestForm}
 
-      <form onSubmit={sendMessage} className="flex w-full flex-col">
+      <form
+        onSubmit={sendMessage}
+        className="w-full flex flex-col items-center rounded overflow-hidden"
+      >
         <div className="flex">{intemediateStepsToggle}</div>
-        <div className="flex w-full mt-4">
+        <div className="w-full flex flex-col md:flex-row items-end">
           <input
-            className="grow mr-8 p-4 rounded"
+            className=" w-full flex-grow p-4 rounded mb-4 md:mb-0 md:mr-4"
             value={input}
             placeholder={placeholder ?? "What's it like to be a pirate?"}
             onChange={handleInputChange}
           />
           <button
             type="submit"
-            className="shrink-0 px-8 py-4 bg-sky-600 rounded w-28"
+            className="px-8 py-4 bg-sky-600 rounded w-full md:w-auto self-end"
           >
             <div
               role="status"
