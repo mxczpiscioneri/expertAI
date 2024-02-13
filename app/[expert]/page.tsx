@@ -1,10 +1,17 @@
 import { ChatWindow } from "@/components/ChatWindow";
-import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import experts from "@/data/experts";
 import Image from "next/image";
 
-export default function Page({ params }: { params: { slug: string } }) {
+export default function Page({ params }: { params: { expert: string } }) {
+  const slug = params?.expert;
+
+  const expert = experts.find((e) => e.href === `/${slug}`);
+
+  if (!expert) {
+    return <div>Especialista não encontrado.</div>;
+  }
+
   return (
     <>
       <Header />
@@ -84,17 +91,17 @@ export default function Page({ params }: { params: { slug: string } }) {
                 <span className="hero-subtitle-text">Podemos te ajudar?</span>
               </span>
               <h2 className="mb-4.5 text-2xl font-extrabold text-white sm:text-4xl xl:text-heading-2">
-                {experts[0].icon} {experts[0].title}
+                {expert.icon} {expert.title}
               </h2>
               <p className="mx-auto max-w-[714px] font-medium">
-                {experts[0].description}
+                {expert.description}
               </p>
             </div>
             <div className="form-box-gradient relative overflow-hidden rounded-[25px] bg-dark p-6 sm:p-8 xl:p-15 mb-20">
               <ChatWindow
                 endpoint="api/chat"
-                emoji={experts[0].icon}
-                placeholder={`Faça sua pergunta para o ${experts[0].gptName} ${experts[0].title}`}
+                emoji={expert.icon}
+                placeholder={`Faça sua pergunta para o ${expert.gptName}`}
                 emptyStateComponent={<div></div>}
               />
             </div>
