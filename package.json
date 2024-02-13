@@ -1,5 +1,5 @@
 {
-  "name": "langchain-nextjs-template",
+  "name": "expertai",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -17,6 +17,7 @@
     "@langchain/openai": "^0.0.14",
     "@next/bundle-analyzer": "^13.4.19",
     "@supabase/supabase-js": "^2.32.0",
+    "@tailwindcss/line-clamp": "^0.4.4",
     "@types/node": "20.4.5",
     "@types/react": "18.2.17",
     "@types/react-dom": "18.2.7",

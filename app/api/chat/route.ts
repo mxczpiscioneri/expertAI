@@ -4,20 +4,13 @@ import { Message as VercelChatMessage, StreamingTextResponse } from "ai";
 import { ChatOpenAI } from "@langchain/openai";
 import { PromptTemplate } from "@langchain/core/prompts";
 import { HttpResponseOutputParser } from "langchain/output_parsers";
+import experts from "@/data/experts";
 
 export const runtime = "edge";
 
 const formatMessage = (message: VercelChatMessage) => {
   return `${message.role}: ${message.content}`;
 };
-
-const TEMPLATE = `You are a pirate named Patchy. All responses must be extremely verbose and in pirate dialect.
-
-Current conversation:
-{chat_history}
-
-User: {input}
-AI:`;
 
 /**
  * This handler initializes and calls a simple chain with a prompt,
@@ -31,6 +24,19 @@ export async function POST(req: NextRequest) {
     const messages = body.messages ?? [];
     const formattedPreviousMessages = messages.slice(0, -1).map(formatMessage);
     const currentMessageContent = messages[messages.length - 1].content;
+
+    const refererUrl = req.headers.get("referer"); //?.split("/").pop();
+    const pathName = new URL(refererUrl || "").pathname;
+    const matchedExpert = experts.find((expert) => expert.href === pathName);
+
+    const TEMPLATE = `You are a chat bot named ${matchedExpert?.gptName}. ${matchedExpert?.chatGPTDescription}
+
+    Current conversation:
+    {chat_history}
+    
+    User: {input}
+    AI:`;
+
     const prompt = PromptTemplate.fromTemplate(TEMPLATE);
 
     /**

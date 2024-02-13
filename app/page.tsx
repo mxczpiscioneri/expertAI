@@ -1,80 +1,81 @@
-import { ChatWindow } from "@/components/ChatWindow";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import ToolCard from "@/components/ToolCard";
+import experts, { Expert } from "@/data/experts";
+import Image from "next/image";
 
 export default function Home() {
-  const InfoCard = (
-    <div className="p-4 md:p-8 rounded bg-[#25252d] w-full max-h-[85%] overflow-hidden">
-      <h1 className="text-3xl md:text-4xl mb-4">
-        ▲ Next.js + LangChain.js 🦜🔗
-      </h1>
-      <ul>
-        <li className="text-l">
-          🤝
-          <span className="ml-2">
-            This template showcases a simple chatbot using{" "}
-            <a href="https://js.langchain.com/" target="_blank">
-              LangChain.js
-            </a>{" "}
-            and the Vercel{" "}
-            <a href="https://sdk.vercel.ai/docs" target="_blank">
-              AI SDK
-            </a>{" "}
-            in a{" "}
-            <a href="https://nextjs.org/" target="_blank">
-              Next.js
-            </a>{" "}
-            project.
-          </span>
-        </li>
-        <li className="hidden text-l md:block">
-          💻
-          <span className="ml-2">
-            You can find the prompt and model logic for this use-case in{" "}
-            <code>app/api/chat/route.ts</code>.
-          </span>
-        </li>
-        <li>
-          🏴‍☠️
-          <span className="ml-2">
-            By default, the bot is pretending to be a pirate, but you can change
-            the prompt to whatever you want!
-          </span>
-        </li>
-        <li className="hidden text-l md:block">
-          🎨
-          <span className="ml-2">
-            The main frontend logic is found in <code>app/page.tsx</code>.
-          </span>
-        </li>
-        <li className="text-l">
-          🐙
-          <span className="ml-2">
-            This template is open source - you can see the source code and
-            deploy your own version{" "}
-            <a
-              href="https://github.com/langchain-ai/langchain-nextjs-template"
-              target="_blank"
-            >
-              from the GitHub repo
-            </a>
-            !
-          </span>
-        </li>
-        <li className="text-l">
-          👇
-          <span className="ml-2">
-            Try asking e.g. <code>What is it like to be a pirate?</code> below!
-          </span>
-        </li>
-      </ul>
-    </div>
-  );
   return (
-    <ChatWindow
-      endpoint="api/chat"
-      emoji="🏴‍☠️"
-      titleText="Patchy the Chatty Pirate"
-      placeholder="I'm an LLM pretending to be a pirate! Ask me about the pirate life!"
-      emptyStateComponent={InfoCard}
-    ></ChatWindow>
+    <div className="min-h-screen">
+      <section className="relative z-10 overflow-hidden">
+        <Header />
+        <div className="mx-auto max-w-7xl">
+          <div className="pointer-events-none absolute inset-0 -z-10 -mx-28 overflow-hidden">
+            <div className="-u-z-10 hero-circle-gradient absolute -top-[128%] left-1/2 -z-1 h-[1282px] w-full max-w-[1282px] -translate-x-1/2 rounded-full sm:-top-[107%] xl:-top-[73%]"></div>
+            <div className="-u-z-10 hero-circle-gradient absolute -top-[112%] left-1/2 -z-1 h-[1046px] w-full max-w-[1046px] -translate-x-1/2 rounded-full sm:-top-[93%] xl:-top-[62%]"></div>
+            <div className="-u-z-10 absolute left-1/2 top-0 aspect-[1204/394] w-full max-w-[1204px] -translate-x-1/2">
+              <Image
+                alt="blur"
+                layout="fill"
+                className="max-w-none"
+                src="/images/blur-02.svg"
+                style={{
+                  position: "absolute",
+                  height: "100%",
+                  width: "100%",
+                  inset: "0px",
+                  color: "transparent",
+                }}
+              />
+            </div>
+            <div className="-u-z-10 absolute left-1/2 top-0 h-full w-full -translate-x-1/2 bg-[url(/images/blur-01.svg)] bg-cover bg-top bg-no-repeat"></div>
+          </div>
+        </div>
+        <div className="relative z-1 mx-auto max-w-[900px] px-4 sm:px-8 xl:px-0">
+          <div className="text-center">
+            <h1 className="my-6 text-3xl font-extrabold text-white sm:text-5xl xl:text-heading-1">
+              Sua Inteligência Especializada
+            </h1>
+            <p className="mx-auto mb-20 max-w-[500px] font-medium md:text-lg">
+              Explore um universo de especialistas <b>IA</b> prontos para guiar,
+              ensinar e resolver problemas. Com <b>ExpertAI</b>, eleve sua
+              experiência em cada desafio ao nível expert, instantaneamente.
+            </p>
+          </div>
+        </div>
+        <div className="relative mx-auto mt-20 aspect-[1170/20] w-full max-w-[1170px]">
+          <Image
+            alt="hero"
+            layout="fill"
+            objectFit="cover"
+            src="/images/hero.png"
+            style={{
+              position: "absolute",
+              height: "100%",
+              width: "100%",
+              left: 0,
+              top: "14px",
+              right: 0,
+              bottom: 0,
+              color: "transparent",
+            }}
+          />
+        </div>
+      </section>
+      <div className="container mx-auto py-12 px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {experts.map((expert: Expert) => (
+            <ToolCard
+              key={expert.title}
+              icon={expert.icon}
+              title={expert.title}
+              description={expert.description}
+              href={expert.href}
+            />
+          ))}
+        </div>
+      </div>
+      <Footer />
+    </div>
   );
 }
